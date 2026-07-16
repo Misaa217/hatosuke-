@@ -109,7 +109,21 @@ void ObjectManager::DeleteAllGameObject()
 {
 	assert(running == nullptr);
 
-	for (auto itr = objects->begin(); itr != objects->end(); itr++)
+	for (auto itr = objects->begin(); itr != objects->end(); ++itr)
+	{
+		GameObject* obj = *itr;
+
+		// nullptr‚È‚ç‰½‚à‚µ‚È‚¢
+		if (obj == nullptr)
+			continue;
+
+		if (!obj->IsDontDestroy())
+		{
+			delete obj;
+			*itr = nullptr;
+		}
+	}
+	/*for (auto itr = objects->begin(); itr != objects->end(); itr++)
 	{
 		GameObject* obj = *itr;
 		if (not obj->IsDontDestroy())
@@ -117,7 +131,7 @@ void ObjectManager::DeleteAllGameObject()
 			delete obj;
 			*itr = nullptr;
 		}
-	}
+	}*/
 	for (auto itr = objects->begin(); itr != objects->end();)
 	{
 		if (*itr == nullptr) {
@@ -128,6 +142,7 @@ void ObjectManager::DeleteAllGameObject()
 			itr++;
 		}
 	}
+	
 }
 
 const std::list<GameObject*>& ObjectManager::GetAllObject()

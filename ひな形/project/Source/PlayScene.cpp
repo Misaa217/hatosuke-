@@ -8,7 +8,7 @@
 PlayScene::PlayScene()
 {
 	stimage = LoadGraph("data/image/stage.png");
-	//new Player();
+	new Player();
 	
 }
 
