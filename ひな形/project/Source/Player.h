@@ -9,7 +9,9 @@ public:
 	void Update() override;
 	void Draw() override;
 	void GoRight(float spd);
-	
+	float GetX() const;
+	float GetY() const;
+
 private:
 	int image;
 	const int CHR_SIZE = 64;

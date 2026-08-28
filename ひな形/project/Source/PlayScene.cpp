@@ -3,12 +3,15 @@
 #include <DxLib.h>
 #include "Screen.h"
 #include <dxgi.h>
+#include "Corn.h"
 
 
 PlayScene::PlayScene()
 {
 	stimage = LoadGraph("data/image/stage.png");
-	new Player();
+	//new Player();
+	cornCount = 0;
+	new Corn();
 	
 }
 
@@ -22,6 +25,8 @@ PlayScene::~PlayScene()
 void PlayScene::Update()
 {
 	player.Update();
+	
+
 	if (CheckHitKey(KEY_INPUT_T)) {
 		SceneManager::ChangeScene("TITLE");
 	}
@@ -32,8 +37,16 @@ void PlayScene::Draw()
 	
 	DrawGraph(0, 0, stimage, TRUE);
 	player.Draw();
+	
 
 
 	DrawString(0, 0, "PLAY SCENE", GetColor(255, 255, 255));
 	DrawString(100, 400, "Push [T]Key To Title", GetColor(255, 255, 255));
+	DrawFormatString(100, 100, GetColor(255, 255, 255),
+		"ÉRÅ[ÉìÅF%då¬", cornCount);
+}
+
+void PlayScene::AddCorn()
+{
+	cornCount++;
 }

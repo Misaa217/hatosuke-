@@ -22,8 +22,8 @@ Player::~Player()
 void Player::GoRight(float spd)
 {
 	x += spd;
-	if (x > Screen::WIDTH - CHR_SIZE) {
-		x = Screen::WIDTH - CHR_SIZE;
+	if (x > Screen::WIDTH - 128) {
+		x = Screen::WIDTH - 128;
 	}
 	dir = RIGHT;
 	move = WALK;
@@ -58,8 +58,8 @@ void Player::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_S)) {
 		y += speed;
-		if (y > Screen::HEIGHT - CHR_SIZE) {
-			y = Screen::HEIGHT - CHR_SIZE;
+		if (y > Screen::HEIGHT - 160) {
+			y = Screen::HEIGHT - 160;
 		}
 		dir = DOWN;
 		move = WALK;
@@ -82,6 +82,26 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawRectGraph(x, y, CHR_SIZE * pat, CHR_SIZE * dir,
-		CHR_SIZE, CHR_SIZE, image, 1);
+	
+	
+	DrawRectExtendGraph(
+			(int)x, (int)y,
+			(int)x + 128, (int)y + 160,
+			64 * pat, 80 * dir,
+			64, 80,
+			image,
+			TRUE
+		);
+	
+}
+
+
+float Player::GetX() const
+{
+	return x;
+}
+
+float Player::GetY() const
+{
+	return y;
 }

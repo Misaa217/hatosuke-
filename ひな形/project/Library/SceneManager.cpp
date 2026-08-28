@@ -41,6 +41,7 @@ void SceneManager::Update()
 	if (m_currentScene != nullptr)
 	{
 		m_currentScene->Update();
+		ObjectManager::Update();
 	}
 }
 
@@ -49,6 +50,7 @@ void SceneManager::Draw()
 	if (m_currentScene != nullptr)
 	{
 		m_currentScene->Draw();
+		ObjectManager::Draw();
 	}
 }
 
