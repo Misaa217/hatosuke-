@@ -3,6 +3,7 @@
 #include"Player.h"
 #include "Corn.h"
 #include "Enemy.h"
+#include <vector>
 
 /// <summary>
 /// ゲームプレイのシーンを制御する
@@ -19,7 +20,7 @@ public:
 	void AddCorn();
 private:
 	Player* player;
-	Enemy* enemy;
+	std::vector<Enemy*> enemies;
 	int stimage;
 	int cornCount;
 	bool gameOver;

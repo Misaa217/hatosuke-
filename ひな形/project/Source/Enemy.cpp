@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include <DxLib.h>
+#include "Screen.h"
 
 Enemy::Enemy()
 {
@@ -26,7 +27,8 @@ Enemy::Enemy()
         x = 1280;
     }
 
-    y = 300;
+    y = GetRand(Screen::HEIGHT - 160);
+
 
     speed = 4.0f;
     pat = 0;

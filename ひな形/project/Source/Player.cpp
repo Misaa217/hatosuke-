@@ -6,8 +6,9 @@
 Player::Player()
 {
 	image = LoadGraph("data/image/hato.png");
-	x = 20;
-	y = 50;
+	x = (Screen::WIDTH - 100) / 2;
+	y = (Screen::HEIGHT - 125) / 2;
+
 	pat = 0;
 	count = 0;
 	dir = DOWN;
@@ -22,8 +23,8 @@ Player::~Player()
 void Player::GoRight(float spd)
 {
 	x += spd;
-	if (x > Screen::WIDTH - 128) {
-		x = Screen::WIDTH - 128;
+	if (x > Screen::WIDTH - 100) {
+		x = Screen::WIDTH - 100;
 	}
 	dir = RIGHT;
 	move = WALK;
@@ -58,8 +59,8 @@ void Player::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_S)) {
 		y += speed;
-		if (y > Screen::HEIGHT - 160) {
-			y = Screen::HEIGHT - 160;
+		if (y > Screen::HEIGHT - 125) {
+			y = Screen::HEIGHT - 125;
 		}
 		dir = DOWN;
 		move = WALK;
@@ -86,7 +87,7 @@ void Player::Draw()
 	
 	DrawRectExtendGraph(
 			(int)x, (int)y,
-			(int)x + 128, (int)y + 160,
+			(int)x + 100, (int)y + 125,
 			64 * pat, 80 * dir,
 			64, 80,
 			image,

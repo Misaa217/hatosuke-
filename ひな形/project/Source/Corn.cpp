@@ -22,7 +22,6 @@ Corn::~Corn()
 
 void Corn::Update()
 {
-    // Playerを探す
     Player* player = FindGameObject<Player>();
 
     if (player == nullptr)
@@ -38,22 +37,22 @@ void Corn::Update()
         y < py + 160 &&
         y + SIZE > py)
     {
-        // 現在のシーンを取得
+       
         PlayScene* scene = GetScene<PlayScene>();
 
-        // コーンの取得数を1増やす
+      
         if (scene != nullptr)
         {
             scene->AddCorn();
         }
         new Corn();
-        // コーンを消す
+       
         DestroyMe();
     }
 }
 
 void Corn::Draw()
 {
-    // コーンを表示
+    
     DrawGraph((int)x, (int)y, image, TRUE);
 }
