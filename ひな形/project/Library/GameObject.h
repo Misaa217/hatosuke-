@@ -18,7 +18,7 @@ class GameObject
 {
 public:
 	GameObject() : tag(""), destroy(false), dontDestroy(false), drawOrder(0) { ObjectManager::Push(this); }
-	virtual ~GameObject() { ObjectManager::Pop(this); }
+	//virtual ~GameObject() { ObjectManager::Pop(this); }
 
 	/// <summary>
 	/// 毎フレームの更新処理のために呼ばれます
@@ -69,6 +69,18 @@ public:
 		ObjectManager::SortByDrawOrder();
 	}
 
+	// オブジェクトを有効・無効にする
+	void SetActive(bool sw)
+	{
+		active = sw;
+	}
+
+	// オブジェクトが有効か調べる
+	bool IsActive() const
+	{
+		return active;
+	}
+
 	/// <summary>
 	/// 描画の優先順位を取得します
 	/// </summary>
@@ -92,6 +104,7 @@ private:
 	std::string tag;     // タグ
 	bool destroy;
 	bool dontDestroy;
+	bool active;
 	int drawOrder;
 };
 

@@ -2,6 +2,7 @@
 #include "../Library/SceneBase.h"
 #include"Player.h"
 #include "Corn.h"
+#include "Enemy.h"
 
 /// <summary>
 /// ゲームプレイのシーンを制御する
@@ -17,8 +18,10 @@ public:
 	float GetY() const;
 	void AddCorn();
 private:
-	Player player;
+	Player* player;
+	Enemy* enemy;
 	int stimage;
 	int cornCount;
+	bool gameOver;
 };
 

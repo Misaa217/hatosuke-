@@ -25,7 +25,7 @@ void ObjectManager::Update()
 		GameObject* obj = *itr;
 		if (obj == nullptr)
 			continue;
-		if (not obj->DestroyRequested())
+		if (not obj->DestroyRequested() && obj->IsActive())
 		{
 			running = obj;
 			obj->Update();
@@ -59,8 +59,9 @@ void ObjectManager::Draw()
 	}
 	for (GameObject* obj : *objects)
 	{
-		if (obj == nullptr || obj->DestroyRequested())
+		if (obj == nullptr || obj->DestroyRequested() || !obj->IsActive())
 			continue;
+
 		obj->Draw();
 	}
 }
